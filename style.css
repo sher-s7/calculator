@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+*{
+    font-size: 22px;
+    margin: 0;
+    padding: 0;
+    font-family: Dejavu sans;
+}
+body{
+    background: rgb(56, 56, 56);
+}
+    .calculator{
+        display: grid;
+        width: 100vw;
+        grid-template-columns: 25% 25% 25% 12.5% 12.5%;
+        height: 100vh;
+        margin: 0 auto;
+
+    }
+    .grid{
+        position: relative;
+        border: none;
+        text-align: center;
+        background: #1f1f20;
+        transition-duration: 0.2s;
+        color: white;
+        border: 1px solid rgb(34,34,34);
+    }
+    .grid:active{
+        background-color: lightgray;
+    }
+    #display{
+        grid-column: 1/span 5;
+        background: lightgray;
+        text-align: right;
+        color: rgb(51, 50, 50);
+        
+        
+
+    }
+    #displayText{
+        margin-right:30px;
+        top: 10px;
+        font-size: 80px;
+        font-family: 'Roboto', sans-serif;
+        word-wrap: break-word;
+    }
+    #7, #8, #9{
+        /* grid-column: 1 / span 2; */
+    }
+    #C{
+        grid-column: 4 / span 2;
+    }
+    #equals{
+        grid-column: 3 / span 3;
+    }
+
+@media only screen and (min-width:801px){
+*{
+    /* font-family: Arial, Helvetica, sans-serif; */
+}
+.calculator{
+    
+    display: grid;
+    grid-template-columns: 25% 25% 25% 12.5% 12.5%;
+    max-width: 500px;
+    height: 80vh;
+    margin: 0 auto;
+    margin-top: 50px;
+    
+    
+}
+.grid{
+    position: relative;
+    border: none;
+    text-align: center;
+    background: #1f1f20;
+    transition-duration: 0s;
+    color: white;
+    border: 1px solid rgb(34,34,34);
+}
+.grid:active{
+    font-size: 20px;
+}
+
+#display{
+    grid-column: 1/span 5;
+    background: lightgray;
+    text-align: right;
+    /* position: relative; */
+    
+}
+#displayText{
+    font-size: 80px;
+    word-wrap: break-word;
+}
+#7, #8, #9{
+    /* grid-column: 1 / span 2; */
+}
+#C{
+    grid-column: 4 / span 2;
+}
+#equals{
+    grid-column: 3 / span 3;
+}
+
+}
