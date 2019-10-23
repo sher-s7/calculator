@@ -20,7 +20,10 @@ function operate(operator, a, b) {
     } else if (operator === '×') {
         return multiply(a, b);
     } else if (operator === '÷') {
-        return divide(a, b).toFixed(5);
+        if(Math.round(divide(a, b)) !== divide(a, b)){
+            return divide(a, b).toFixed(5);
+        }
+        return divide(a, b);
     } else if (operator === '%') {
         return mod(a, b);
     }
