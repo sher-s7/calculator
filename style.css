@@ -29,13 +29,22 @@ body{
         background-color: lightgray;
     }
     #display{
-        grid-column: 1/span 5;
+        grid-column: 1/span 4;
         background: lightgray;
         text-align: right;
-        color: rgb(51, 50, 50);
-        
-        
-
+        color: #333232;
+    }
+    #back{
+        grid-column: 5/span 1;
+        border: none;
+        color: lightgray;
+        background: #bbbbbb !important;
+    }
+    #back:hover{
+        background: #e2e1e1 !important;
+    }
+    #back:active{
+        font-size: 57px;
     }
     #displayText{
         margin-right:30px;
@@ -51,7 +60,7 @@ body{
         grid-column: 4 / span 2;
     }
     #equals{
-        grid-column: 3 / span 3;
+        grid-column: 4 / span 2;
     }
 
 @media only screen and (min-width:801px){
@@ -83,11 +92,15 @@ body{
 }
 
 #display{
-    grid-column: 1/span 5;
+    grid-column: 1/span 4;
     background: lightgray;
     text-align: right;
     /* position: relative; */
     
+}
+#back{
+    grid-column: 5/span 1;
+    font-size: 60px;
 }
 #displayText{
     font-size: 80px;
@@ -100,7 +113,7 @@ body{
     grid-column: 4 / span 2;
 }
 #equals{
-    grid-column: 3 / span 3;
+    grid-column: 4 / span 2;
 }
 
 }

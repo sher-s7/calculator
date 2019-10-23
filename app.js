@@ -3,6 +3,7 @@ let display = '';
 const displayDiv = document.getElementById('displayText');
 let stringLength = 16;
 let zeroError = 'Cannot divide by zero.';
+const decimalButton = document.getElementById('decimal');
 function add(a, b) { return a + b; }
 function subtract(a, b) { return a - b; }
 function multiply(a, b) { return a * b; }
@@ -20,9 +21,6 @@ function operate(operator, a, b) {
     } else if (operator === '×') {
         return multiply(a, b);
     } else if (operator === '÷') {
-        if(Math.round(divide(a, b)) !== divide(a, b)){
-            return divide(a, b).toFixed(5);
-        }
         return divide(a, b);
     } else if (operator === '%') {
         return mod(a, b);
@@ -87,30 +85,64 @@ function computeString(str, firstValOp) {
 
     return strNums[0];
 }
+let countDecimals = function (value) {
+    if(Math.floor(value) === Number(value)) return 0;
+    return value.toString().split(".")[1].length || 0; 
+}
 let lastDisplay = 'temp';
 items.forEach((item) => {
     item.addEventListener('click', function (e) {
         if (e.target.id === 'equals') {
             let firstValOp= false;
-            if(!isNumeric(display[0])){
+            if(!isNumeric(display[0]) && display[0]!== '.'){
                 firstValOp=true;
             }
             display = String(computeString(display, firstValOp));
+            
+            if(countDecimals(display)>5){
+                display = String(Number(display).toFixed(5));
+            }
             displayDiv.textContent = display;
             lastDisplay=display;
+            if(!display.includes('.')){
+                decimalButton.classList.remove('disabled')
+            }
             // display = '';
         }
         if (e.target.id === 'C') {
             display = '0';
             displayDiv.textContent = display;
             display='';
+            decimalButton.classList.remove('disabled');
 
         }
+        if(e.target.id==='decimal' && !e.target.classList.contains('disabled')){
+            display+=e.target.textContent;
+            displayDiv.textContent=display;
+            e.target.classList.toggle('disabled');
+        }
+        if(e.target.id==='back'){
+            console.log('backing')
+            if(display.length===1){
+                display = '0';
+                displayDiv.textContent = display;
+                display='';
+                decimalButton.classList.remove('disabled');
+            }
+            if(display[display.length-1]==='.'){
+                decimalButton.classList.remove('disabled');
+            }
+            display=display.slice(0,display.length-1);
+            displayDiv.textContent=display;
+        }
         if(e.target.classList[0]==='num' || e.target.classList[0]==='op'){
+            if(e.target.classList[0]==='op'){
+                decimalButton.classList.remove('disabled');
+            }
             if((display===zeroError) || (display==='0' && !(e.target.classList[0]==='op'))){
                 console.log('a')
                 display='';
-            }else if(!(isNaN(Number(lastDisplay))) && e.target.classList[0]==='num'){
+            }else if(!(isNaN(Number(lastDisplay))) && e.target.classList[0]==='num' && display!=='.' && !display.includes('.')){
                 console.log(lastDisplay)
                 display='';
                 lastDisplay = 'temp';
@@ -120,6 +152,7 @@ items.forEach((item) => {
             }else if(display==='' && e.target.classList[0]==='op'){
                 display='0';
             }
+        
             display += e.target.textContent;
             displayDiv.textContent = display;
         }
