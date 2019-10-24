@@ -10,9 +10,10 @@ body{
 }
     .calculator{
         display: grid;
+        padding-top: 20px;
         width: 100vw;
         grid-template-columns: 25% 25% 25% 12.5% 12.5%;
-        height: 100vh;
+        height: 95vh;
         margin: 0 auto;
 
     }
@@ -43,6 +44,9 @@ body{
     #back:hover{
         background: #e2e1e1 !important;
     }
+    img:hover, img{
+        background: transparent !important;
+    }
     #back:active{
         font-size: 57px;
     }
@@ -62,9 +66,16 @@ body{
     #equals{
         grid-column: 4 / span 2;
     }
+    #C, #equals{
+        color: orange;
+    }
+    .op{
+        color: rgb(155, 147, 137) !important;
+    }
 
 @media only screen and (min-width:801px){
 *{
+    font-family: Dejavu sans;
     /* font-family: Arial, Helvetica, sans-serif; */
 }
 .calculator{
