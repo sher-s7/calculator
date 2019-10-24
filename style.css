@@ -10,10 +10,10 @@ body{
 }
     .calculator{
         display: grid;
-        padding-top: 20px;
-        width: 100vw;
+        padding-top: 50px;
+        width: 90vw;
         grid-template-columns: 25% 25% 25% 12.5% 12.5%;
-        height: 95vh;
+        height: 80vh;
         margin: 0 auto;
 
     }
